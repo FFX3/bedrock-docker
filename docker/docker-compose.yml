@@ -27,3 +27,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'toor'
     ports:
       - 3306:3306
+    volumes:
+      - db-volume:/var/lib/mysql
+volumes:
+  db-volume:
