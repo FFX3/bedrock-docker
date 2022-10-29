@@ -4,9 +4,12 @@ services:
     build: ./nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ../bedrock:/var/www/html
-  php-fpm:
+      - ./nginx/ssl:/etc/ssl:ro
+      - ./nginx/logs:/var/log/nginx
+  wordpress:
     build: ./php8 
     env_file:
       - ../bedrock/.env
