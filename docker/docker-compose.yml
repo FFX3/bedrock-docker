@@ -1,0 +1,26 @@
+version: '1'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../bedrock:/var/www/html
+  php-fpm:
+    build: ./php8 
+    env_file:
+      - ../bedrock/.env
+    volumes:
+      - ../bedrock:/var/www/html
+    ports:
+      - 9000:9000
+  db:
+    build: ./mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'wp'
+      MYSQL_USER: 'wp'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_ROOT_PASSWORD: 'toor'
+    ports:
+      - 3306:3306
