@@ -1,0 +1,1 @@
+run cd ./bedrock/web/app/themes/ && composer create-project roots/sage your-theme-name
