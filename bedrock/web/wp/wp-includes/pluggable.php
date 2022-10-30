@@ -1597,9 +1597,9 @@ if ( ! function_exists( 'wp_validate_redirect' ) ) :
 		 * @param string[] $hosts An array of allowed host names.
 		 * @param string   $host  The host name of the redirect destination; empty string if not set.
 		 */
-		$allowed_hosts = (array) apply_filters( 'allowed_redirect_hosts', array( $wpp['host'] ), isset( $lp['host'] ) ? $lp['host'] : '' );
+		$allowed_hosts = (array) apply_filters( 'allowed_redirect_hosts', array( $wpp['host'] ?? null ), isset( $lp['host'] ) ? $lp['host'] : '' );
 
-		if ( isset( $lp['host'] ) && ( ! in_array( $lp['host'], $allowed_hosts, true ) && strtolower( $wpp['host'] ) !== $lp['host'] ) ) {
+		if ( isset( $lp['host'] ) && ( ! in_array( $lp['host'] ?? null, $allowed_hosts, true ) && strtolower( $wpp['host'] ?? null ) !== $lp['host'] ) ) {
 			$location = $default;
 		}
 
